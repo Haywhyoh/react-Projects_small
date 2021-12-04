@@ -28,7 +28,7 @@ const List = ({items, removeItem, editItem}) => {
         );
       })}
     </div>
-  )
-}
+  );
+};
 
 export default List
