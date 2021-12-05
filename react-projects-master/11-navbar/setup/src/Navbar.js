@@ -4,7 +4,33 @@ import { links, social } from './data'
 import logo from './logo.svg'
 
 const Navbar = () => {
-  return <h4>navbar</h4>
+  const [showLinks, setShowLinks] = useState(false);
+  const linkContainerRef = useRef(null);
+  const linksRef = useRef();
+  const toggleLinks = () =>{
+    setShowLinks(!showLinks);
+  };
+  useEffect(() =>{
+    const linksHeight = linkRef.current.getBoundingClientRect().height;
+    if (showLinks) {
+      linksContainerRef.current.style.height = `${linksHeight}px`;
+
+    }else{
+      linksContainerRef.current.style.height =`0px`;
+    }
+  }, [showLinks]);
+  return(
+    <nav>
+      <div className='nav-center'>
+        <div className= 'nav-header'>
+          <img src={logo} className='logo' alt='logo' />
+          <button className='nav-toggle' onClick={toggleLinks}>
+            <FaBars />
+          </button>
+        </div>
+      </div>
+    </nav>
+  )
 }
 
 export default Navbar
